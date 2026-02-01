@@ -1,4 +1,8 @@
 .btn,
 button {
     @include button;
+
+    &-icon {
+        @include button-icon;
+    }
 }

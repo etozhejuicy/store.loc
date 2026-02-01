@@ -7,6 +7,8 @@
 @import "./components/button";
 @import "./components/text";
 
+@import "./layouts/header";
+
 *,
 *:before,
 *:after {
@@ -42,17 +44,72 @@ main {
     flex: 1;
 
     &>section {
-        &:first-of-type {
-            padding-top: 0;
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        @include breakpoint('lg') {
+            padding-top: 48px;
+            padding-bottom: 48px;
         }
 
-        &:is(.hero) {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        &:not(:first-of-type) {
-            padding-top: 0;
+        @include breakpoint('md') {
+            padding-top: 32px;
+            padding-bottom: 32px;
         }
     }
+}
+
+.hero {
+    position: relative;
+    padding: 0;
+
+    @include breakpoint('sm') {
+        margin-top: -80px;
+    }
+
+    &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-background {
+        position: relative;
+        user-select: none;
+        overflow: hidden;
+
+        @include breakpoint('sm') {
+            margin-left: -16px;
+            margin-right: -16px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        & img {
+            position: relative;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+
 }

@@ -10,19 +10,52 @@
 
 <body>
     <header class="header">
-        шапка...
+        <div class="container">
+            <div class="header-inner">
+                <a href="./" class="logo" title="Demo Store Logo">
+                    <img src="./assets/images/logo.svg" alt="Demo Store Logo" />
+                </a>
+
+                <nav class="menu">
+                    <a href="javascript://">Каталог</a>
+                    <a href="javascript://">Оплата и доставка</a>
+                    <a href="javascript://">Обмен и возврат</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" class="btn-icon">
+                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use xlink:href="./assets/images/sprite.svg#icon-cart"></use>
+                        </svg>
+                    </button>
+
+                    <button type="button" class="btn-icon">
+                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use xlink:href="./assets/images/sprite.svg#icon-burger"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
+        <!-- Главный экран -->
         <section class="hero">
             <div class="container">
-                <h1>Store</h1>
-                <p>
-                    Делаем хорошие вещи вместе
-                </p>
-                <button type="button">Test button</button>
+                <div class="hero-content text-center text-white">
+                    <h1>
+                        Делаем хорошие <br />
+                        вещи вместе
+                    </h1>
+                </div>
+
+                <div class="hero-background">
+                    <img src="./assets/images/hero.webp" alt="Фон главного экрана" />
+                </div>
             </div>
         </section>
 
+        <!-- Текст описания -->
         <section>
             <div class="container">
                 <p class="headline">
