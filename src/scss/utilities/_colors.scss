@@ -1,0 +1,24 @@
+:root {
+    --orange: #FC4C02;
+    --primary: #141414;
+    --light-grey: #DDDCDB;
+    --neutral-200: #F4F4F3;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+$orange: #FC4C02;
+$primary: #141414;
+$light-grey: #DDDCDB;
+$neutral-200: #F4F4F3;
+$black: #000000;
+$white: #ffffff;
+
+$colors: (
+    $orange: "orange",
+        $primary: "primary",
+            $light-grey: "light-grey",
+                $neutral-200: "neutral-200",
+                    $black: "black",
+                        $white: "white",
+                            )

@@ -1,0 +1,170 @@
+// breakpoints system
+@mixin breakpoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+
+        @if $value ==0 {
+            @content;
+        }
+
+        @else {
+            @media (max-width: ($value - 0.02px)) {
+                @content;
+            }
+        }
+    }
+
+    @else {
+        @warn "Неизвестный брейкпоинт: #{$breakpoint}";
+    }
+}
+
+@mixin break-up($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+
+        @if $value ==0 {
+            @content;
+        }
+
+        @else {
+            @media (min-width: ($value)) {
+                @content;
+            }
+        }
+    }
+
+    @else {
+        @warn "Неизвестный брейкпоинт: #{$breakpoint}";
+    }
+}
+
+@mixin h1 {
+    font-weight: 500;
+    font-size: 80px;
+    line-height: 1.125;
+
+    @include breakpoint("lg") {
+        font-size: 64px;
+    }
+
+    @include breakpoint("md") {
+        font-size: 32px;
+    }
+}
+
+@mixin h2 {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.125;
+
+    @include breakpoint("md") {
+        font-size: 32px;
+    }
+
+    @include breakpoint("sm") {
+        font-size: 24px;
+    }
+}
+
+@mixin h2 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.125;
+
+    @include breakpoint("sm") {
+        font-size: 24px;
+    }
+}
+
+@mixin headline {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 1.125;
+
+    @include breakpoint("sm") {
+        font-size: 24px;
+    }
+}
+
+// button
+@mixin button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    color: var(--black);
+    line-height: 1;
+    font-family: $font-family;
+    font-size: $font-size;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    text-transform: none;
+    border-radius: 100px;
+    border: 1px solid;
+    border-color: var(--neutral-200);
+    background-color: var(--neutral-200);
+    white-space: nowrap;
+    transition: 0.25s ease-in-out;
+
+    &:hover,
+    &.hover {
+        background-color: lighten($neutral-200, 10%);
+        border-color: lighten($neutral-200, 10%);
+        color: var(--black);
+    }
+
+    &:focus:active,
+    &.focus,
+    &.active {
+        background-color: darken($neutral-200, 10%);
+        border-color: darken($neutral-200, 10%);
+        color: var(--black);
+    }
+
+    &.disabled,
+    &:disabled {
+        background-color: var(--neutral-200);
+        color: var(--black);
+        border-color: var(--neutral-200);
+        box-shadow: none;
+        opacity: 0.35;
+        cursor: not-allowed;
+
+        &:hover,
+        &.hover,
+        &:focus:active,
+        &:focus,
+        &.focus,
+        &.active {
+            background-color: var(--neutral-200);
+            color: var(--black);
+            border-color: var(--neutral-200);
+        }
+    }
+
+    &.hidden,
+    &:hidden {
+        display: none;
+    }
+
+    &>i,
+    &>svg {
+        vertical-align: text-bottom;
+        transition: 0.25s ease-in-out;
+    }
+
+    &.aspected {
+        --btn-padding-x: 4px;
+        --btn-padding-y: 4px;
+        --btn-padding-x: var(--btn-padding-y);
+        width: var(--btn-size);
+        height: var(--btn-size);
+    }
+}

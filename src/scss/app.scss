@@ -1,0 +1,58 @@
+// my includes base is here
+@import "./utilities/variables";
+@import "./utilities/gap";
+@import "./utilities/margin";
+@import "./utilities/container";
+
+@import "./components/button";
+@import "./components/text";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $black;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    min-height: 40vh;
+    min-height: 40svh;
+    flex: 1;
+
+    &>section {
+        &:first-of-type {
+            padding-top: 0;
+        }
+
+        &:is(.hero) {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        &:not(:first-of-type) {
+            padding-top: 0;
+        }
+    }
+}

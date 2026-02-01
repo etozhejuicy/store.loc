@@ -1,0 +1,119 @@
+h,
+.h {
+    &1 {
+        @include h1;
+    }
+
+    &2 {
+        @include h2;
+    }
+}
+
+.headline {
+    @include headline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-block-start: 0;
+    margin-block-end: 0.45em;
+}
+
+// font-weight settings
+.fw {
+    @each $fw, $value in $font-weights {
+        &-#{$fw} {
+            font-weight: $value;
+        }
+    }
+}
+
+// for text-colors
+.text {
+    @each $color, $value in $colors {
+        &-#{$value} {
+            color: $color;
+        }
+    }
+
+    &-left {
+        text-align: left;
+    }
+
+    &-right {
+        text-align: right;
+    }
+
+    &-center {
+        text-align: center;
+    }
+
+    &-uppercase {
+        text-transform: uppercase;
+    }
+
+    &-lowercase {
+        text-transform: lowercase;
+    }
+
+    &-underline {
+        text-decoration: underline;
+
+        &:is(a) {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &-nowrap {
+        white-space: nowrap;
+    }
+
+    @each $breakpoint, $width in $breakpoints {
+        @if $breakpoint !="xs" {
+            @include breakpoint($breakpoint) {
+                &-#{$breakpoint} {
+                    &-left {
+                        text-align: left;
+                    }
+
+                    &-right {
+                        text-align: right;
+                    }
+
+                    &-center {
+                        text-align: center;
+                    }
+
+                    &-uppercase {
+                        text-transform: uppercase;
+                    }
+
+                    &-lowercase {
+                        text-transform: lowercase;
+                    }
+
+                    &-underline {
+                        text-decoration: underline;
+
+                        &:is(a) {
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+                    &-nowrap {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
