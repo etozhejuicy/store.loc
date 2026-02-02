@@ -111,21 +111,23 @@
     border-color: var(--neutral-200);
     background-color: var(--neutral-200);
     white-space: nowrap;
+    transform: none;
     transition: 0.25s ease-in-out;
 
     &:hover,
     &.hover {
-        background-color: lighten($neutral-200, 10%);
-        border-color: lighten($neutral-200, 10%);
+        background-color: lighten($neutral-200, 2.5%);
+        border-color: lighten($neutral-200, 2.5%);
         color: var(--black);
     }
 
     &:focus:active,
     &.focus,
     &.active {
-        background-color: darken($neutral-200, 10%);
-        border-color: darken($neutral-200, 10%);
+        background-color: darken($neutral-200, 5%);
+        border-color: darken($neutral-200, 5%);
         color: var(--black);
+        transform: translateY(2px);
     }
 
     &.disabled,
@@ -201,4 +203,33 @@
             fill: currentColor;
         }
     }
+}
+
+// flex-layout
+@mixin flex-layout($elem-width, $elem-count, $gap) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: $gap;
+
+    &>* {
+        flex: 1 0 calc($elem-width - ($gap * ($elem-count - 1) / $elem-count));
+        max-width: calc($elem-width - ($gap * ($elem-count - 1) / $elem-count));
+        width: 100%;
+    }
+}
+
+// cards
+@mixin card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    max-width: 100%;
+    padding: 16px;
+    background-color: var(--light-grey);
+    border: none;
+    border-radius: 8px;
+    color: var(--black);
+    transition: 0.25s ease-in-out;
 }

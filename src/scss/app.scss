@@ -1,10 +1,12 @@
 // my includes base is here
+@import "./utilities/reset";
 @import "./utilities/variables";
 @import "./utilities/gap";
 @import "./utilities/margin";
 @import "./utilities/container";
 
 @import "./components/button";
+@import "./components/card";
 @import "./components/text";
 
 @import "./layouts/header";
@@ -42,6 +44,7 @@ main {
     min-height: 40vh;
     min-height: 40svh;
     flex: 1;
+    margin-top: 32px;
 
     &>section {
         padding-top: 60px;
@@ -82,12 +85,16 @@ main {
 
     &-background {
         position: relative;
+        display: flex;
         user-select: none;
+        border-radius: 8px;
         overflow: hidden;
 
         @include breakpoint('sm') {
+            height: 80svh;
             margin-left: -16px;
             margin-right: -16px;
+            border-radius: 0;
         }
 
         &::before {
@@ -112,4 +119,69 @@ main {
     }
 
 
+}
+
+.banners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+
+    @include breakpoint('lg') {
+        gap: 32px;
+    }
+
+    &-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+        width: 100%;
+
+        @include break-up('md') {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        @include break-up('xl') {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            gap: 32px;
+        }
+
+        &>* {
+            @include break-up('md') {
+                &:nth-child(1) {
+                    grid-area: 1 / 1 / 3 / 5;
+                }
+
+                &:nth-child(2) {
+                    grid-area: 1 / 5 / 2 / 7;
+                }
+
+                &:nth-child(3) {
+                    grid-area: 2 / 5 / 3 / 7;
+                }
+            }
+
+            @include break-up('xl') {
+                &:nth-child(1) {
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+
+                &:nth-child(2) {
+                    grid-area: 1 / 2 / 2 / 3;
+                }
+
+                &:nth-child(3) {
+                    grid-area: 1 / 3 / 2 / 4;
+                }
+            }
+
+            // Чтобы сделать максимум 3 элемента, остальный нафиг
+            &:nth-child(5n - 1) {
+                display: none;
+            }
+        }
+    }
 }
